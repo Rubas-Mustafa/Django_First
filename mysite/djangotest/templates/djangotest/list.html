@@ -1,0 +1,34 @@
+{% extends "djangotest/base.html" %}
+{% block title %}View List{% endblock %}
+
+{% block content %}
+    <h1>{{ls.name}} </h1>
+    <form method="post" action="#">
+        {% csrf_token %}
+            {% for item in ls.items_set.all  %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                    {% if item.complete == True %}
+                        <input type="checkbox", value="clicked", name="c{{item.id}}" checked/>
+                    {% else %}
+                        <input type="checkbox", value="clicked", name="c{{item.id}}"/>
+                    {% endif %}
+                    </div>
+                </div>
+                <input type="text" value="{{item.text}}" class="form-control"
+            </div>
+            {% endfor %}
+
+            <div class="input-group m-3 p-3">
+                <div class="input-group-prepend">
+                    <button type="submit" name="newItem" value="newItem" class="btn btn-danger mx-3">New Item</button>
+                </div>
+                <input type="text", name="new"/>
+                
+                    <button type="submit" name="newItem" value="newItem" class="btn btn-danger mx-3">Save this Item</button>
+            </div>
+
+
+        </form>
+{% endblock %} 

@@ -1,0 +1,10 @@
+{% extends 'djangotest/base.html' %}
+{% block title %}Logout Here{% endblock %}
+
+{% block content %}
+
+     {% csrf_token %}
+     <p>Want to logout?? Click here<a href="/logout"> Here </a></p>
+     <button type="submit" class="btn btn-danger">Logout</button>
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'djangotest/base.html' %}
+{% block title %}Login Here{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<form method="POST">
+     {% csrf_token %}
+     {{form|crispy}}
+     <button type="submit" class="btn btn-danger">Login</button>
+     <p>Don't Have an Account? Create one From<a href="/register"> Here</a></p>
+</form>
+{% endblock content %}
